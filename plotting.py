@@ -15,4 +15,5 @@ def plot_accuracy_graph(model_names, accuracies):
     ax.set_title('Model Accuracies')
 
     plt.tight_layout()
+    plt.figure(figsize=(3, 3))
     plt.show()
