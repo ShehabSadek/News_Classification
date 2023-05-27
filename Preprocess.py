@@ -2,7 +2,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-
+from nltk import FreqDist
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -25,3 +25,22 @@ def preprocess_text(words):
         preprocessed_text.append(' '.join(filtered_tokens))
     
     return preprocessed_text
+
+
+
+def voc(corpus):
+
+    tokens = nltk.word_tokenize(corpus)
+
+    freq_dist = FreqDist(tokens)
+
+    sorted_words = sorted(freq_dist.items(), key=lambda x: x[1], reverse=True)
+
+    freq_dist.plot(30, cumulative=False)  
+
+    voc_size = 5000 
+
+    top_words = [word for word, freq in sorted_words[:voc_size]]
+
+    print("Vocabulary Size:", len(top_words))
+    print("Top Words:", top_words)
