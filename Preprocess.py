@@ -25,4 +25,3 @@ def preprocess_text(words):
         preprocessed_text.append(' '.join(filtered_tokens))
     
     return preprocessed_text
-
