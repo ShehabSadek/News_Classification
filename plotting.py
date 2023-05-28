@@ -19,7 +19,30 @@ def plot_accuracy_graph(model_names, accuracies):
     plt.show()
 
 def metrics(acc_values,pre_values,rec_values,f1_values):
-    classifiers = ['LogisticRegression', 'MultinomialNB', 'RandomForestClassifier', 'SVC']
+    classifiers = ['LogisticRegression', 'NB', 'RF', 'SVC']
+    metrics = ['Accuracy', 'Precision', 'Recall', 'F1-Score']
+
+    metrics_values = np.array([acc_values, pre_values, rec_values, f1_values])
+
+    bar_width = 0.2
+
+    index = np.arange(len(classifiers))
+
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+
+    for i in range(len(metrics)):
+        plt.bar(index + i * bar_width, metrics_values[i], bar_width, label=metrics[i], color=colors[i])
+
+    plt.xlabel('Classifiers')
+    plt.ylabel('Metric Value')
+    plt.title('Performance Metrics for Classifiers')
+    plt.xticks(index + bar_width * 1.5, classifiers)
+    plt.legend()
+
+    plt.show()
+
+def metrics2(acc_values,pre_values,rec_values,f1_values):
+    classifiers = ['LogisticRegression', 'RF', 'SVC']
     metrics = ['Accuracy', 'Precision', 'Recall', 'F1-Score']
 
     metrics_values = np.array([acc_values, pre_values, rec_values, f1_values])
